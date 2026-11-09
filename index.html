@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Study guide for the Early Republic short-answer retake: narrated lessons, flashcards, quiz show, president lineup, and a write-5-of-10 practice test.">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Early Republic Writing Retake</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: a classroom chalkboard. Sticky tab rail of "rooms", one room visible at a time. Deliberately single-theme (dark board). */
+:root{
+  --board:#1d362f; --board-2:#25443b; --board-3:#2d5146;
+  --chalk:#eef0e6; --chalk-dim:#b4c2b8; --line:rgba(238,240,230,.16);
+  --yellow:#f2d675; --good:#9fe0a8; --bad:#f2a3a0; --wood:#6b4a2f;
+  --f-display:"Cabin Sketch","Comic Sans MS",cursive;
+  --f-body:"Atkinson Hyperlegible",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--board);color:var(--chalk);font:16px/1.55 var(--f-body);
+  background-image:radial-gradient(ellipse at 20% 0%,rgba(255,255,255,.05),transparent 60%),radial-gradient(ellipse at 90% 100%,rgba(0,0,0,.25),transparent 60%);min-height:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--wood)}
+.wrap{max-width:1000px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;text-wrap:balance;margin:0;line-height:1.15}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{outline:2px dashed var(--yellow);outline-offset:3px}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.muted{color:var(--chalk-dim)}
+
+/* top rail */
+header.rail{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--wood);border-bottom:4px solid #4f361f;box-shadow:0 4px 12px rgba(0,0,0,.35)}
+.rail .wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding-block:10px}
+.brand{font-family:var(--f-display);font-size:1.35rem;color:#fff4dc;margin-right:auto;white-space:nowrap}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{background:transparent;border:1.5px solid rgba(255,244,220,.35);color:#fff4dc;border-radius:999px;padding:5px 12px;font-size:.92rem}
+.tab[aria-selected="true"]{background:#fff4dc;color:#3b2716;border-color:#fff4dc;font-weight:700}
+
+/* hero */
+.hero{padding-block:36px 20px;display:grid;gap:14px}
+.hero h1{font-size:clamp(2.1rem,6vw,3.4rem)}
+.hero p{max-width:62ch;margin:0;color:var(--chalk-dim)}
+.note{border:1.5px dashed var(--yellow);border-radius:10px;padding:12px 16px;color:var(--yellow);max-width:76ch}
+.note b{color:var(--chalk)}
+
+/* topic grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:18px}
+.topic{position:relative;background:var(--board-2);border:1px solid var(--line);border-radius:12px}
+.topic:hover{border-color:var(--yellow)}
+.topic.known{border-color:var(--good);background:var(--board-3)}
+.topic .open{all:unset;cursor:pointer;display:grid;gap:6px;padding:14px 52px 14px 14px;width:100%;box-sizing:border-box;border-radius:12px}
+.topic .open:focus-visible{outline:2px dashed var(--yellow);outline-offset:-4px}
+.check{position:absolute;top:12px;right:12px;width:30px;height:30px;border-radius:8px;border:2px solid var(--chalk-dim);background:transparent;color:var(--board);font-weight:700;font-size:1.05rem;display:grid;place-items:center;padding:0}
+.check[aria-pressed="true"]{background:var(--good);border-color:var(--good)}
+.knowbtn[aria-pressed="true"]{background:var(--good);color:var(--board);border-color:var(--good)}
+.clockbox{display:flex;align-items:center;gap:6px;background:#3b2716;color:#fff4dc;border-radius:999px;padding:4px 6px 4px 12px;font-family:var(--f-mono);font-variant-numeric:tabular-nums;font-size:.9rem}
+.clockbox[hidden]{display:none}
+.clockbox .t{font-size:1.05rem;min-width:4.2ch;text-align:right}
+.clockbox button{background:rgba(255,244,220,.15);border:0;color:#fff4dc;border-radius:999px;padding:3px 9px;font-size:.8rem}
+.topic .num{font-family:var(--f-mono);font-size:.78rem;color:var(--chalk-dim);letter-spacing:.06em}
+.topic h3{font-size:1.25rem}
+.topic .tl{font-size:.85rem;color:var(--chalk-dim)}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font-size:.75rem;border-radius:999px;padding:1px 8px;border:1px solid var(--line);color:var(--chalk-dim)}
+.chip.ok{border-color:var(--good);color:var(--good)}
+.chip.warn{border-color:var(--yellow);color:var(--yellow)}
+.section-h{font-size:1.7rem;margin-top:28px}
+.mix{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin-top:12px}
+.mix div{border:1.5px dashed var(--line);border-radius:10px;padding:10px 14px;color:var(--chalk-dim);font-size:.95rem}
+.mix b{color:var(--yellow);display:block}
+
+/* slides */
+.stage{margin-top:24px;background:var(--board-2);border:10px solid var(--wood);border-radius:6px;box-shadow:inset 0 0 40px rgba(0,0,0,.35),0 10px 30px rgba(0,0,0,.35);padding:clamp(18px,4vw,40px);min-height:380px;display:grid;grid-template-rows:auto 1fr auto;gap:16px}
+.stage .eyebrow{font-family:var(--f-mono);font-size:.8rem;color:var(--yellow);letter-spacing:.08em;text-transform:uppercase}
+.stage h2{font-size:clamp(1.7rem,4.5vw,2.6rem)}
+.stage ul{margin:0;padding-left:1.2em;display:grid;gap:10px;font-size:1.08rem;max-width:68ch}
+.stage li::marker{color:var(--yellow)}
+.stage dl{margin:0;display:grid;gap:10px;max-width:72ch}
+.stage dt{color:var(--yellow);font-weight:700}
+.stage dd{margin:0 0 0 1em}
+.ctrl{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.btn{background:var(--chalk);color:var(--board);border:0;border-radius:8px;padding:9px 16px;font-weight:700}
+.btn.ghost{background:transparent;color:var(--chalk);border:1.5px solid var(--line)}
+.btn.y{background:var(--yellow);color:#2b2410}
+.btn:disabled{opacity:.4;cursor:default}
+.dots{display:flex;gap:6px;margin-left:auto}
+.dots i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.dots i.on{background:var(--yellow)}
+.btn.reading{background:var(--yellow);color:#2b2410;border-color:var(--yellow)}
+.tts{display:flex;gap:10px 18px;flex-wrap:wrap;align-items:center;margin-top:14px;color:var(--chalk-dim);font-size:.92rem}
+.tts select{font:inherit;background:var(--board-2);color:var(--chalk);border:1px solid var(--line);border-radius:6px;padding:4px 6px;max-width:220px}
+.tts label{display:flex;gap:6px;align-items:center}
+.topic-pick{display:flex;gap:6px;flex-wrap:wrap;margin-top:18px}
+.topic-pick button{background:transparent;border:1px solid var(--line);border-radius:999px;padding:4px 11px;font-size:.85rem;color:var(--chalk-dim)}
+.topic-pick button[aria-pressed="true"]{border-color:var(--yellow);color:var(--yellow)}
+
+/* flashcards */
+.card-area{display:grid;place-items:center;margin-top:24px;gap:16px}
+.flash{width:min(560px,100%);aspect-ratio:3/2;max-width:100%;perspective:1200px;background:none;border:0;padding:0}
+.flash .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.flash.flipped .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;display:grid;place-items:center;padding:24px;text-align:center;font-size:1.2rem;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.face.front{background:#f6f1df;color:#23312b;font-family:var(--f-display);font-size:clamp(1.4rem,4.5vw,2rem)}
+.face.back{background:var(--board-3);border:1px solid var(--yellow);transform:rotateY(180deg)}
+.face small{position:absolute;top:10px;left:14px;font-family:var(--f-mono);font-size:.72rem;opacity:.6}
+
+/* quiz */
+.qbox{margin-top:24px;background:var(--board-2);border:1px solid var(--line);border-radius:12px;padding:clamp(16px,4vw,28px);display:grid;gap:14px}
+.qbox h2{font-family:var(--f-body);font-size:1.3rem;font-weight:700}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;background:var(--board);border:1.5px solid var(--line);border-radius:10px;padding:11px 14px}
+.opt:hover:not(:disabled){border-color:var(--chalk-dim)}
+.opt.right{border-color:var(--good);color:var(--good)}
+.opt.wrong{border-color:var(--bad);color:var(--bad)}
+.score{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--f-mono)}
+.score b{color:var(--yellow);font-size:1.3rem}
+.why{color:var(--chalk-dim)}
+
+/* practice test (paper) */
+.paper{color-scheme:light;margin-top:24px;background:#f6f1df;color:#23312b;border-radius:6px;padding:clamp(18px,4vw,40px);box-shadow:0 10px 30px rgba(0,0,0,.4);display:grid;gap:18px}
+.paper h2{font-family:var(--f-display);color:#23312b}
+.mcq{border:0;margin:0;padding:0 0 14px;border-bottom:1px solid #d9d2bc;display:grid;gap:8px;min-width:0}
+.mcq legend{font-weight:700;padding:0;margin-bottom:8px}
+.mcq .src{font-family:var(--f-mono);font-size:.72rem;color:#7a8580;font-weight:400;margin-left:6px}
+.mopts{display:grid;gap:6px}
+.mopts label{display:flex;gap:10px;align-items:flex-start;padding:7px 10px;border-radius:6px;border:1.5px solid #d9d2bc;background:rgba(255,255,255,.6);cursor:pointer}
+.mopts input{appearance:none;-webkit-appearance:none;flex:none;width:18px;height:18px;margin:3px 0 0;border:2px solid #7a8580;border-radius:50%;background:#fff;cursor:pointer}
+.mopts input:checked{border-color:#f2d675;background:radial-gradient(circle,#f2d675 0 42%,#23312b 48%)}
+.mopts label.sel{background:#23312b;color:#f6f1df;border-color:#23312b;font-weight:700;box-shadow:0 0 0 3px rgba(35,49,43,.25)}
+.mopts label.sel::after{content:"✓ Selected";margin-left:auto;align-self:center;white-space:nowrap;font-family:var(--f-mono);font-size:.75rem;color:#f2d675}
+.paper.graded .mopts label.sel::after{content:"Your answer";color:inherit}
+.mopts label.is-right{background:#d6f0d9;border-color:#1d7a3a;color:#23312b;box-shadow:none}
+.mopts label.is-wrong{background:#f8d7d5;border-color:#a2312b;color:#23312b;box-shadow:none}
+.mcq.answered{border-left:4px solid #23312b;padding-left:12px}
+.qnav{display:flex;flex-wrap:wrap;gap:5px}
+.qnav button{width:32px;height:32px;padding:0;border-radius:6px;border:1.5px solid #b9b19a;background:rgba(255,255,255,.6);color:#23312b;font-family:var(--f-mono);font-size:.8rem}
+.qnav button.done{background:#23312b;color:#f6f1df;border-color:#23312b}
+.qnav button.ok{background:#1d7a3a;color:#fff;border-color:#1d7a3a}
+.qnav button.no{background:#a2312b;color:#fff;border-color:#a2312b}
+.qnav button.un{box-shadow:inset 0 0 0 3px #f2d675}
+.qnav.rt button.un{background:#f2d675;color:#2b2410;border-color:#f2d675;box-shadow:none}
+.qnav button:disabled{cursor:default;opacity:1}
+.flag{margin-left:10px;font:700 .75rem var(--f-mono);border:1.5px solid #b9b19a;background:transparent;color:#55625b;border-radius:999px;padding:1px 9px;vertical-align:middle}
+.flag[aria-pressed="true"]{background:#f2d675;border-color:#c9a93a;color:#2b2410}
+.mcq .expl{font-size:.92rem;color:#38453f}
+.mcq .expl b{color:#a2312b}
+.grade{font-family:var(--f-display);font-size:2.6rem;color:#a2312b;transform:rotate(-5deg);display:inline-block}
+.breakdown{display:flex;flex-wrap:wrap;gap:6px}
+.breakdown span{font-size:.82rem;border-radius:999px;padding:2px 10px;border:1.5px solid #d9d2bc;background:#fff}
+.breakdown span.lo{border-color:#a2312b;color:#a2312b}
+.breakdown span.hi{border-color:#1d7a3a;color:#1d7a3a}
+.warn-line{color:#a2312b;font-weight:700}
+.timer{font-family:var(--f-mono);color:var(--yellow)}
+.sticky-count{position:sticky;bottom:max(12px,env(safe-area-inset-bottom,0px));justify-self:end;background:#23312b;color:#f6f1df;border-radius:999px;padding:6px 14px;font-family:var(--f-mono);font-size:.85rem;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+
+/* president lineup */
+.lineup{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:10px;max-width:640px;position:relative}
+.pcard{position:relative;display:flex;align-items:center;gap:14px;background:#f6f1df;color:#23312b;border-radius:10px;padding:12px 14px;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none;box-shadow:0 4px 12px rgba(0,0,0,.3);transition:background .3s}
+.pcard.drag{cursor:grabbing;outline:3px dashed var(--yellow);z-index:2;box-shadow:0 10px 24px rgba(0,0,0,.45);transition:none}
+.pcard .slot{font-family:var(--f-display);font-size:1.9rem;min-width:1.4ch;color:#a2312b}
+.pcard .who{min-width:0;display:grid;gap:2px}
+.pcard b{font-size:1.15rem}
+.pcard small{color:#55625b;font-size:.88rem}
+.pcard .yrs{font-family:var(--f-mono);color:#1d7a3a}
+.pcard .arrows{margin-left:auto;display:flex;flex-direction:column;gap:4px}
+.pcard .arrows button{background:#e6dfc8;border:0;border-radius:6px;width:32px;height:26px;color:#23312b;font-size:.85rem;padding:0}
+.pcard .arrows button:disabled{opacity:.3}
+.lineup.solved .pcard{background:#d6f0d9}
+.lstat{display:flex;gap:18px;flex-wrap:wrap;margin-top:16px;font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.lstat b{color:var(--yellow)}
+.win{font-family:var(--f-display);font-size:2rem;color:var(--yellow);margin:14px 0 0}
+#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50}
+
+@media (prefers-reduced-motion:reduce){.flash .in{transition:none}}
+@media (max-width:560px){.brand{width:100%}.dots{margin-left:0;width:100%}}
+
+/* writing test extras */
+.stage .say{background:rgba(0,0,0,.18);border-left:3px solid var(--yellow);padding:12px 16px;border-radius:0 8px 8px 0;max-width:72ch;font-size:1.05rem}
+.paper.lined{background-image:repeating-linear-gradient(transparent 0 31px,#c9d8e6 31px 32px);gap:22px}
+.paper .q{display:grid;gap:8px}
+.paper .q label{font-weight:700}
+.paper textarea{width:100%;min-height:130px;font:16px/1.6 var(--f-body);background:rgba(255,255,255,.75);color:#23312b;border:1.5px solid #b9b19a;border-radius:6px;padding:10px;resize:vertical}
+.paper textarea:focus-visible{outline:2px dashed #23312b;outline-offset:2px}
+.paper .res{border-radius:8px;padding:12px 14px;background:#fff;border:1.5px solid #d9d2bc;display:grid;gap:8px}
+.paper .res ul{margin:0;padding-left:1.1em}
+.hit{color:#1d7a3a}.miss{color:#a2312b}
+.paper .model{font-style:italic;color:#38453f}
+</style>
+</head>
+<body>
+
+<header class="rail"><div class="wrap">
+  <div class="brand">Room 1787 · Writing Retake</div>
+  <nav class="tabs" role="tablist" id="tabs"></nav>
+  <div class="clockbox" id="clockbox" hidden aria-live="off">
+    <span id="clabel">Topic 1</span><span class="t" id="ctime">0:00</span>
+    <button id="cpause">Pause</button><button id="creset">Reset</button>
+  </div>
+</div></header>
+
+<main class="wrap" id="app"></main>
+
+<script>
+/* Each topic: slides (h, p bullets, optional tip), answer (full-credit model answer, read as the last slide),
+   keys [idea, [keywords]] for grading written answers, cards [front, back], quiz [question, [correct, wrong, wrong, wrong], explanation]. */
+const T = [
+{id:"aoc",title:"Articles of Confederation",when:"1781–1789",
+ slides:[
+  {h:"Our first government",p:["Written in 1777, approved (ratified) in 1781. It was the first plan of government for the United States.","It made a league of friendship between 13 states that kept most of the power.","Why so weak? Americans had just fought a king. They were scared of a strong central government."]},
+  {h:"Why it failed",p:["Congress could NOT tax. It could only ask states for money.","No president to enforce laws and no national courts.","Congress could not regulate trade between states, and each state printed its own money.","Laws needed 9 of 13 states. Changing the Articles needed all 13."]},
+  {h:"One win, one wake-up call",p:["Win: the Northwest Ordinance (1787) set up how territories become states and banned slavery in the Northwest Territory.","Wake-up call: Shays' Rebellion (1786–87). Massachusetts farmers in debt rebelled and the national government could not raise an army to stop it.","Result: leaders met in Philadelphia in 1787 to fix it, and wrote the Constitution instead."]},
+  {h:"Memory hook",p:["Too weak to work: no money (can't tax), no boss (no president), no judge (no courts).","Shays' Rebellion = proof it was too weak."]}],
+ answer:"The Articles of Confederation was the first plan of government for the United States, ratified in 1781. It created a weak national government because Americans were afraid of a powerful ruler like the British king. Congress could not tax, could not regulate trade, and there was no president or national courts. Shays' Rebellion showed how weak it was, so leaders met in 1787 and replaced it with the Constitution.",
+ keys:[["First U.S. government (1781)",["first","1781","1777"]],["National government was weak",["weak"]],["Congress could not tax",["tax"]],["No president or national courts",["president","executive","court","enforce"]],["Shays' Rebellion showed its weakness",["shays","rebellion"]],["Replaced by the Constitution",["constitution","convention","replace"]]],
+ cards:[["What could Congress NOT do under the Articles?","Tax, regulate trade, or enforce laws (no president, no national courts)."],["What event proved the Articles were too weak?","Shays' Rebellion (1786–87), a revolt of indebted Massachusetts farmers."],["What was the big success of the Articles?","The Northwest Ordinance (1787): a plan for new states, with slavery banned in the Northwest Territory."]],
+ quiz:[["Why did Americans make the Articles of Confederation weak on purpose?",["They feared a strong central government like the British king","They wanted France to protect them","The states had no money","George Washington asked them to"],"After fighting a king, they kept power with the states."],
+  ["Which was a weakness of the Articles?",["Congress could not collect taxes","The president had too much power","The Supreme Court was too strong","States could not print money"],"Congress could only ask states for money."],
+  ["Shays' Rebellion led directly to…",["The Constitutional Convention of 1787","The War of 1812","The Louisiana Purchase","The Monroe Doctrine"],"It convinced leaders the government had to be fixed."]]},
+
+{id:"comp",title:"Constitutional Compromises",when:"1787",
+ slides:[
+  {h:"Big states vs. small states",p:["Virginia Plan (James Madison): representation based on population. Good for BIG states.","New Jersey Plan (William Paterson): every state gets an equal vote. Good for SMALL states.","The convention almost fell apart over this."]},
+  {h:"The Great Compromise",p:["Also called the Connecticut Compromise (Roger Sherman).","Congress gets TWO houses (bicameral).","House of Representatives: seats based on population (big states happy).","Senate: 2 senators per state, equal (small states happy)."]},
+  {h:"The Three-Fifths Compromise",p:["North vs. South: should enslaved people count toward a state's population?","Deal: 3 out of every 5 enslaved people were counted for representation and taxes.","This gave Southern states more seats in the House."]},
+  {h:"Two more deals",p:["Slave trade compromise: Congress could regulate trade but could not ban the slave trade until 1808.","Electoral College: a middle ground between Congress picking the president and a direct popular vote."]}],
+ answer:"At the Constitutional Convention in 1787, delegates had to compromise to agree on a new government. The Great Compromise created a two-house Congress: the House of Representatives based on population (what big states wanted in the Virginia Plan) and the Senate with two senators per state (what small states wanted in the New Jersey Plan). The Three-Fifths Compromise counted three out of every five enslaved people toward a state's population. Delegates also agreed Congress could not end the slave trade until 1808.",
+ keys:[["Great (Connecticut) Compromise",["great","connecticut"]],["Two houses of Congress",["two house","bicameral","senate","house of rep"]],["House based on population",["population"]],["Senate equal: 2 per state",["equal","two senators","2 senators","two per state","2 per state","same number"]],["Big vs. small states",["big","small","large"]],["Three-Fifths Compromise",["three-fifths","3/5","three fifths","3 fifths"]]],
+ cards:[["Great Compromise","Two-house Congress: House by population, Senate equal (2 per state)."],["Virginia Plan vs. New Jersey Plan","Virginia: representation by population (big states). New Jersey: equal votes (small states)."],["Three-Fifths Compromise","3 of every 5 enslaved people counted for representation and taxes."]],
+ quiz:[["The Great Compromise created…",["A Congress with a House based on population and a Senate with equal votes","A president chosen by Congress","The Bill of Rights","A ban on slavery"],"It blended the Virginia and New Jersey Plans."],
+  ["Which plan favored LARGE states?",["Virginia Plan","New Jersey Plan","Connecticut Plan","Monroe Plan"],"Representation by population helped big states."],
+  ["The Three-Fifths Compromise was an argument between…",["Northern and Southern states","Big and small states","Federalists and Anti-Federalists","Britain and France"],"It was about counting enslaved people for representation."]]},
+
+{id:"va",title:"Virginians at the Convention",when:"1787",
+ slides:[
+  {h:"George Washington",p:["Chosen president of the Constitutional Convention. He ran the meetings.","People trusted him, so his support helped the Constitution get accepted.","Later became the first President."]},
+  {h:"James Madison",p:["Father of the Constitution.","Wrote the Virginia Plan, which became the base of the Constitution.","Took the most detailed notes of the debates.","Later wrote the Bill of Rights and helped write the Federalist Papers."]},
+  {h:"George Mason",p:["Wrote the Virginia Declaration of Rights (1776).","REFUSED to sign the Constitution because it had no bill of rights.","His ideas became a model for the Bill of Rights."]},
+  {h:"Virginians who weren't in the room",p:["Thomas Jefferson was in France as an ambassador. His Virginia Statute for Religious Freedom (1786) inspired freedom of religion in the First Amendment.","Patrick Henry refused to go (I smelt a rat) and led the Anti-Federalists in Virginia.","Edmund Randolph presented the Virginia Plan to the delegates."]}],
+ answer:"Several Virginians played big roles in creating the Constitution. George Washington led the Convention as its president. James Madison, the 'Father of the Constitution,' wrote the Virginia Plan and later the Bill of Rights. George Mason wrote the Virginia Declaration of Rights and refused to sign the Constitution because it had no bill of rights. Thomas Jefferson was in France, but his Virginia Statute for Religious Freedom inspired the First Amendment.",
+ keys:[["Washington presided over the Convention",["washington"]],["Madison, Father of the Constitution",["madison","father"]],["Mason wanted a bill of rights",["mason"]],["Rights documents (Declaration of Rights / Bill of Rights)",["rights"]],["Jefferson's religious freedom ideas",["jefferson","religio"]]],
+ cards:[["Father of the Constitution","James Madison: wrote the Virginia Plan and the Bill of Rights."],["Who presided over the Constitutional Convention?","George Washington."],["Why didn't George Mason sign?","The Constitution had no bill of rights."],["Jefferson's link to the Constitution","He was in France, but his Statute for Religious Freedom inspired the First Amendment."]],
+ quiz:[["Who is called the Father of the Constitution?",["James Madison","George Washington","George Mason","Patrick Henry"],"He wrote the Virginia Plan and took the notes."],
+  ["Why did George Mason refuse to sign the Constitution?",["It had no bill of rights","He wanted a king","He wasn't invited","He supported the Articles"],"He wrote the Virginia Declaration of Rights."],
+  ["Where was Thomas Jefferson during the Convention?",["In France","Leading the meetings","In the Senate","Fighting the British"],"His religious freedom statute still shaped the First Amendment."]]},
+
+{id:"fed",title:"Federalists vs. Anti-Federalists",when:"1787–1791",
+ slides:[
+  {h:"The ratification fight",p:["The Constitution needed 9 of 13 states to ratify (approve) it.","Two sides argued in newspapers and state meetings."]},
+  {h:"Federalists: FOR the Constitution",p:["Wanted a strong national (federal) government.","Leaders: Alexander Hamilton, James Madison, John Jay.","Wrote the Federalist Papers, 85 essays explaining why the Constitution was good."]},
+  {h:"Anti-Federalists: AGAINST it",p:["Feared a strong central government would become like the king and take away rights.","Wanted more power kept by the states.","Demanded a Bill of Rights.","Leaders: Patrick Henry, George Mason."]},
+  {h:"Who won? Kind of both",p:["Ratified in 1788 after Federalists promised to add a Bill of Rights.","Bill of Rights (first 10 amendments) added in 1791.","Later the split became the first political parties: Federalists (Hamilton, Adams) vs. Democratic-Republicans (Jefferson, Madison). Washington warned against parties."]}],
+ answer:"Federalists supported the new Constitution and wanted a strong national government; leaders like Alexander Hamilton, James Madison, and John Jay wrote the Federalist Papers to convince people. Anti-Federalists, like Patrick Henry and George Mason, opposed it because they feared a strong central government would take away people's rights, and they wanted more power for the states. The Anti-Federalists demanded a Bill of Rights, and the promise to add it in 1791 helped the Constitution get approved.",
+ keys:[["Federalists supported the Constitution",["support","favor","for the constitution","wanted the constitution","pro"]],["Strong national government",["strong","central","national"]],["Anti-Federalists feared it / wanted state power",["fear","state","against","oppos"]],["Bill of Rights",["bill of rights"]],["Names a leader",["hamilton","madison","jay","henry","mason"]],["Federalist Papers",["federalist papers","essays"]]],
+ cards:[["Federalists","Supported the Constitution and a strong national government. Hamilton, Madison, Jay."],["Anti-Federalists","Opposed the Constitution; feared losing rights; wanted state power and a Bill of Rights. Patrick Henry, George Mason."],["Federalist Papers","85 essays by Hamilton, Madison, and Jay arguing for the Constitution."],["What did Anti-Federalists win?","The Bill of Rights (1791)."]],
+ quiz:[["Anti-Federalists insisted the Constitution needed…",["A Bill of Rights","A king","More power for the president","A national bank"],"They feared the government would take away rights."],
+  ["Which person was an Anti-Federalist?",["Patrick Henry","Alexander Hamilton","John Jay","James Madison"],"Henry smelt a rat and opposed the Constitution."],
+  ["The Federalist Papers were written to…",["Convince people to ratify the Constitution","Declare war on Britain","End the Articles of Confederation","Elect Thomas Jefferson"],"85 essays by Hamilton, Madison, and Jay."]]},
+
+{id:"gw",title:"George Washington",when:"President 1789–1797",
+ slides:[
+  {h:"The first President",p:["Elected unanimously in 1789. John Adams was Vice President.","He knew everything he did would set a precedent (an example for future presidents)."]},
+  {h:"Precedents he set",p:["Created the first cabinet: Jefferson (State), Hamilton (Treasury), Knox (War), Randolph (Attorney General).","Chose the title Mr. President.","Stepped down after two terms. Presidents followed this until the 22nd Amendment made it law."]},
+  {h:"Big moments",p:["Hamilton and Jefferson argued constantly, which started political parties.","Whiskey Rebellion (1794): farmers protested a whiskey tax. Washington sent troops, which proved the new government could enforce its laws (unlike the Articles).","Proclamation of Neutrality (1793): stayed out of the war between Britain and France."]},
+  {h:"Farewell Address (1796)",p:["Warned against political parties.","Warned against permanent alliances with foreign nations.","The core answer: first president, set the standard, created the cabinet, warned about parties."]}],
+ answer:"George Washington was the first President of the United States (1789–1797) and set precedents for future presidents. He created the first cabinet, including Thomas Jefferson and Alexander Hamilton, and stepped down after two terms. He kept the U.S. neutral in the war between Britain and France and used troops to end the Whiskey Rebellion. In his Farewell Address he warned against political parties and permanent foreign alliances.",
+ keys:[["First President",["first"]],["Set precedents",["precedent","standard","example"]],["Created the cabinet",["cabinet"]],["Two terms",["two term","2 term","two terms"]],["Farewell Address warnings",["farewell","warn","part"]],["Neutrality / Whiskey Rebellion",["neutral","whiskey"]]],
+ cards:[["Washington's cabinet","Jefferson (State), Hamilton (Treasury), Knox (War), Randolph (Attorney General)."],["Whiskey Rebellion (1794)","Farmers protested a whiskey tax; Washington sent troops, proving the government could enforce laws."],["Farewell Address","Warned against political parties and permanent foreign alliances."],["Two-term precedent","Washington stepped down after 8 years; later made law by the 22nd Amendment."]],
+ quiz:[["Which precedent did Washington set?",["Serving only two terms","Buying Louisiana","Declaring war on Britain","Writing the Monroe Doctrine"],"Presidents followed it for over 140 years."],
+  ["In his Farewell Address, Washington warned against…",["Political parties and permanent foreign alliances","Trading with China","Adding new states","Writing a Bill of Rights"],"He worried parties would divide the nation."],
+  ["What did the Whiskey Rebellion show?",["The new federal government could enforce its laws","The Articles still worked","Britain controlled the frontier","States could ignore federal taxes"],"Washington sent troops to stop it."]]},
+
+{id:"brfr",title:"Interactions with Britain & France",when:"1793–1812",
+ slides:[
+  {h:"Caught between two giants",p:["Britain and France were at war (starting 1793).","Both wanted the U.S. on their side, and both messed with American ships.","The U.S. was young and too weak to fight either one."]},
+  {h:"Under Washington",p:["Proclamation of Neutrality (1793): the U.S. picks no side.","Jay's Treaty (1794) with Britain: British leave forts in the Northwest Territory. Avoided war, but it was unpopular because it didn't stop British attacks on ships."]},
+  {h:"Under Adams",p:["XYZ Affair (1797): three French agents (called X, Y, and Z) demanded a bribe before they would meet U.S. diplomats.","Americans were furious: Millions for defense, but not one cent for tribute!","Led to an undeclared naval war with France (the Quasi-War) and the Alien and Sedition Acts (1798)."]},
+  {h:"Under Jefferson",p:["Louisiana Purchase (1803): bought from France (Napoleon) for $15 million. Doubled the size of the U.S.","Britain impressed (kidnapped) American sailors, and both nations seized U.S. ships.","Embargo Act (1807): banned all trade with other countries. It hurt American merchants more than Europe.","These problems led to the War of 1812."]}],
+ answer:"In the 1790s and early 1800s, Britain and France were at war, and both interfered with the young United States. Washington declared neutrality, and Jay's Treaty with Britain avoided war. Under Adams, the XYZ Affair, when French officials demanded a bribe, led to an undeclared naval war with France. Under Jefferson, the U.S. bought the Louisiana Territory from France, but British impressment of sailors and attacks on American trade led to the Embargo Act and eventually the War of 1812.",
+ keys:[["Britain & France at war, U.S. stayed neutral",["neutral"]],["Jay's Treaty",["jay"]],["XYZ Affair / bribe",["xyz","bribe"]],["Louisiana Purchase from France",["louisiana"]],["Impressment of sailors",["impress","sailor","kidnap"]],["Trade problems / Embargo Act",["embargo","trade","ship"]]],
+ cards:[["XYZ Affair (1797)","French agents demanded a bribe from U.S. diplomats; led to an undeclared naval war with France."],["Jay's Treaty (1794)","Deal with Britain: they left western forts. Avoided war but was unpopular."],["Embargo Act (1807)","Jefferson banned foreign trade; it hurt U.S. merchants more than Britain or France."],["Impressment","Britain forcing (kidnapping) American sailors into the Royal Navy."]],
+ quiz:[["In the XYZ Affair, French agents demanded…",["A bribe","Louisiana","Canada","The release of sailors"],"Not one cent for tribute!"],
+  ["What did the Embargo Act of 1807 do?",["Stopped American trade with all foreign countries","Bought Louisiana","Declared war on France","Ended impressment"],"It backfired and hurt U.S. merchants."],
+  ["Washington's response to the war between Britain and France was…",["The Proclamation of Neutrality","The Monroe Doctrine","The Embargo Act","Declaring war on Britain"],"The U.S. was too young to pick a side."]]},
+
+{id:"e1800",title:"Election of 1800",when:"1800",
+ slides:[
+  {h:"The matchup",p:["John Adams (Federalist), the sitting president, vs. Thomas Jefferson (Democratic-Republican).","Jefferson's running mate was Aaron Burr.","One of the nastiest campaigns in U.S. history."]},
+  {h:"The tie",p:["Back then each elector cast 2 votes, with no separate vote for Vice President.","Jefferson and Burr each got 73 electoral votes, a tie.","The House of Representatives had to decide. It took 36 votes.","Alexander Hamilton pushed for Jefferson because he trusted Burr even less. Jefferson won; Burr became VP."]},
+  {h:"Why it matters",p:["Called the Revolution of 1800.","First peaceful transfer of power from one political party to another, with no violence.","Proved the Constitution worked."]},
+  {h:"The fix: 12th Amendment (1804)",p:["Electors now vote SEPARATELY for President and Vice President.","Before this, the runner-up became VP, which is how rivals Adams and Jefferson ended up as President and VP in 1796. The 12th Amendment ended that."],tip:"Don't mix it up: the Election of 1800 is not the War of 1812. And the 12th Amendment means the VP now comes from the winner's ticket."}],
+ answer:"In the Election of 1800, Thomas Jefferson (Democratic-Republican) defeated President John Adams (Federalist). Jefferson and his running mate Aaron Burr tied with 73 electoral votes each, so the House of Representatives had to choose, and it picked Jefferson. It was called the 'Revolution of 1800' because power passed peacefully from one party to another. The tie led to the 12th Amendment, which made electors vote separately for president and vice president.",
+ keys:[["Jefferson won",["jefferson"]],["Defeated John Adams",["adams"]],["Tie with Aaron Burr",["tie","burr"]],["House of Representatives decided",["house"]],["Peaceful transfer of power",["peaceful","revolution of 1800","transfer"]],["12th Amendment / separate votes",["12th","twelfth","separate"]]],
+ cards:[["Revolution of 1800","First peaceful transfer of power between political parties (Adams to Jefferson)."],["Who tied in 1800?","Thomas Jefferson and Aaron Burr, 73 electoral votes each."],["Who broke the 1800 tie?","The House of Representatives (Hamilton backed Jefferson)."],["12th Amendment","Electors vote separately for President and Vice President."]],
+ quiz:[["Who tied in the Election of 1800?",["Jefferson and Burr","Jefferson and Adams","Adams and Hamilton","Madison and Monroe"],"Running mates on the same ticket tied at 73."],
+  ["Why is it called the Revolution of 1800?",["Power passed peacefully from one party to another","There was a war","The Constitution was replaced","The king returned"],"No violence, just a vote."],
+  ["Which amendment came out of the 1800 tie?",["12th Amendment","1st Amendment","10th Amendment","22nd Amendment"],"Separate ballots for President and VP."]]},
+
+{id:"w1812",title:"War of 1812: Causes & Outcomes",when:"1812–1815",
+ slides:[
+  {h:"Causes",p:["Impressment: Britain kidnapped American sailors into the Royal Navy.","Trade: Britain blocked and seized U.S. ships trading with France.","Native Americans: Britain supplied guns to Native nations on the frontier (Tecumseh).","War Hawks: Henry Clay and John C. Calhoun pushed for war and wanted to take Canada.","President James Madison asked Congress to declare war in June 1812."],tip:"Memory trick: I.T.N.W. = Impressment, Trade, Natives, War Hawks."},
+  {h:"Key events",p:["U.S. invasions of Canada failed.","USS Constitution (Old Ironsides) won big sea battles.","1814: the British burned Washington, D.C. and the White House. Dolley Madison saved George Washington's portrait.","Fort McHenry in Baltimore held, and Francis Scott Key wrote The Star-Spangled Banner.","Battle of New Orleans (Jan. 1815): Andrew Jackson won big, but the peace treaty had already been signed."]},
+  {h:"Outcomes",p:["Treaty of Ghent (Dec. 1814): no land changed hands. Things went back to how they were before.","Huge rise in nationalism (national pride). Some called it the Second War for Independence.","American factories grew because British goods were cut off.","The Federalist Party collapsed after opposing the war.","Native American resistance weakened (Tecumseh was killed in 1813).","Andrew Jackson became a national hero, and the Era of Good Feelings followed."]},
+  {h:"One-line summary",p:["Nobody won land, but America won respect and pride."]}],
+ answer:"The War of 1812 was fought between the United States and Britain. Causes included British impressment (kidnapping) of American sailors, British interference with American trade, Britain arming Native Americans on the frontier, and War Hawks who wanted to take Canada. The British burned Washington, D.C., but Andrew Jackson won the Battle of New Orleans. The Treaty of Ghent ended the war with no land changing hands, but it boosted American nationalism, helped American manufacturing grow, and led to the end of the Federalist Party.",
+ keys:[["Impressment of sailors",["impress","sailor","kidnap","navy"]],["Trade interference",["trade","ship"]],["Britain armed Native Americans",["native","indian","tecumseh","gun"]],["War Hawks / Canada",["war hawk","canada","clay"]],["Treaty of Ghent / no land changed",["ghent","no land","nothing changed","status quo","no winner","tie"]],["Nationalism / pride",["national","pride","patriot","respect"]]],
+ cards:[["Four causes of the War of 1812","Impressment, trade interference, Britain arming Native Americans, War Hawks wanting Canada."],["Treaty of Ghent","Ended the War of 1812; no land changed hands."],["Battle of New Orleans","Andrew Jackson's big win in 1815, fought after the treaty was signed."],["Biggest outcome of the War of 1812","A surge of American nationalism (pride), plus growth of U.S. manufacturing."]],
+ quiz:[["Which was a cause of the War of 1812?",["British impressment of American sailors","The XYZ Affair","Shays' Rebellion","The Missouri Compromise"],"Britain kidnapped U.S. sailors into its navy."],
+  ["What did the Treaty of Ghent do?",["Ended the war with no land changing hands","Gave Canada to the U.S.","Gave Louisiana to Britain","Banned slavery"],"Things returned to how they were before the war."],
+  ["Who were the War Hawks?",["Members of Congress who wanted war with Britain","British generals","Native American leaders","Federalists who opposed the war"],"Henry Clay and John C. Calhoun."]]},
+
+{id:"mo",title:"Missouri Compromise",when:"1820",
+ slides:[
+  {h:"The problem",p:["In 1819 there were 11 free states and 11 slave states, so the Senate was balanced.","Missouri asked to join as a slave state, which would give slave states the majority.","Northern states objected."]},
+  {h:"The deal",p:["Worked out by Henry Clay, the Great Compromiser.","Missouri joined as a SLAVE state.","Maine (split off from Massachusetts) joined as a FREE state. Balance stays even, 12 to 12.","The 36°30′ line: slavery banned in the rest of the Louisiana Territory north of Missouri's southern border."]},
+  {h:"Why it matters",p:["Kept the peace for about 30 years.","Showed slavery was splitting the country. Jefferson called it a fire bell in the night.","Later undone by the Kansas-Nebraska Act (1854)."]}],
+ answer:"The Missouri Compromise of 1820 was a deal to keep the balance between free and slave states in the Senate. Missouri was admitted as a slave state and Maine as a free state, keeping the number even at 12 and 12. It also drew the 36°30′ line across the Louisiana Territory, banning slavery north of it. Henry Clay helped pass it, and it showed how slavery was dividing the country.",
+ keys:[["Missouri admitted as a slave state",["missouri"]],["Maine admitted as a free state",["maine"]],["Kept balance of free & slave states",["balance","even","equal","12"]],["36°30′ line",["36","line"]],["Henry Clay",["clay"]],["Slavery dividing the nation",["slave","slavery"]]],
+ cards:[["Missouri Compromise (1820)","Missouri = slave state, Maine = free state, slavery banned north of 36°30′."],["Why was Maine added?","To keep the Senate balanced between free and slave states (12 to 12)."],["The Great Compromiser","Henry Clay."]],
+ quiz:[["Under the Missouri Compromise, Maine entered as…",["A free state","A slave state","A territory","Part of Canada"],"Missouri slave, Maine free."],
+  ["What was the 36°30′ line?",["The line north of which slavery was banned in the Louisiana Territory","The border with Canada","The Mason-Dixon Line","The line for the Monroe Doctrine"],"It split the Louisiana Territory."],
+  ["Why did Missouri statehood cause a crisis?",["It would upset the balance of free and slave states","Missouri wanted to join Britain","Missouri had no people","It was owned by France"],"The Senate was 11–11 before."]]},
+
+{id:"md",title:"Monroe Doctrine",when:"1823",
+ slides:[
+  {h:"Background",p:["James Monroe, President 1817–1825, during the Era of Good Feelings (basically one party).","Spain's colonies in Latin America had just won independence.","The U.S. feared European countries would try to take them back or start new colonies (Russia was also pushing into the Pacific Northwest)."]},
+  {h:"What it said",p:["The Western Hemisphere (North and South America) is CLOSED to new European colonies.","Europe must not interfere with independent nations in the Americas.","In return, the U.S. stays out of Europe's affairs and wars.","Existing European colonies would be left alone."]},
+  {h:"Who and how",p:["Written mostly by Secretary of State John Quincy Adams.","The U.S. Army and Navy were small, so Britain's Royal Navy actually helped enforce it (Britain wanted to trade with Latin America).","It became a cornerstone of U.S. foreign policy for over 100 years."]},
+  {h:"Sum it up",p:["I stay on my side, you stay on yours.","Add the who and when: President James Monroe, 1823."]}],
+ answer:"The Monroe Doctrine was a policy announced by President James Monroe in 1823 and written mostly by Secretary of State John Quincy Adams. It warned European nations not to create new colonies or interfere in the Western Hemisphere (North and South America). In return, the United States promised to stay out of European affairs. It was meant to protect newly independent Latin American countries and became a cornerstone of U.S. foreign policy.",
+ keys:[["President James Monroe",["monroe"]],["1823",["1823"]],["Europe: no new colonies",["coloni","europe"]],["Western Hemisphere / the Americas",["hemisphere","america","latin"]],["U.S. stays out of Europe",["stay out","interfere","their side","our side","own side"]],["John Quincy Adams",["adams"]]],
+ cards:[["Monroe Doctrine (1823)","Europe: no new colonies or meddling in the Americas. U.S.: stays out of Europe."],["Who mainly wrote the Monroe Doctrine?","Secretary of State John Quincy Adams."],["Era of Good Feelings","Monroe's presidency after the War of 1812, with one main party and strong national pride."]],
+ quiz:[["The Monroe Doctrine warned European nations to…",["Stay out of the Western Hemisphere","Leave Canada","Stop the slave trade","Pay war debts"],"I stay on my side, you stay on yours."],
+  ["Who mainly wrote the Monroe Doctrine?",["John Quincy Adams","Thomas Jefferson","Henry Clay","James Madison"],"He was Monroe's Secretary of State."],
+  ["In return, the U.S. promised to…",["Stay out of European affairs","Give up Louisiana","Join Britain's navy","Free Latin America"],"It was a two-way deal."]]}
+];
+
+/* ---------- storage (per-viewer, optional) ---------- */
+const store = {
+  get(k){try{return JSON.parse(localStorage.getItem(k)||"{}")}catch(e){return {}}},
+  set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+};
+let S = Object.assign({quiz:{},test:{},known:{},times:{},tts:null,lineup:null}, store.get("er-writing"));
+const save = () => store.set("er-writing",S);
+
+const $ = (s,r=document) => r.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const shuffle = a => {a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const byId = id => T.find(t=>t.id===id);
+const mkQ = (t,q) => ({tid:t.id,t:t.title,q:q[0],opts:shuffle(q[1].map((o,i)=>({o,right:i===0}))),why:q[2]});
+
+/* ---------- tabs ---------- */
+const ROOMS = [["home","Classroom"],["lessons","Lessons"],["flash","Flashcards"],["quiz","Quiz Show"],["lineup","President Lineup"],["test","Practice Test"]];
+let room = (location.hash||"").slice(1);
+if(!ROOMS.some(r=>r[0]===room)) room="home";
+function renderTabs(){
+  $("#tabs").innerHTML = ROOMS.map(([k,l])=>`<button class="tab" role="tab" aria-selected="${k===room}" data-room="${k}">${l}</button>`).join("");
+}
+$("#tabs").addEventListener("click",e=>{const b=e.target.closest("[data-room]");if(b)go(b.dataset.room)});
+
+/* ---------- read aloud ---------- */
+/* Andrew and Ava are pre-recorded neural voices (audio/<voice>/<topic>-<slide>.mp3); "computer" falls back to the browser's own voice.
+   One shared player plus a speak id: starting anything stops everything else, so only the current slide is ever heard. */
+const VOICES=[["andrew","Andrew (natural, male)"],["ava","Ava (natural, female)"],["computer","Computer voice (offline)"]];
+const tts={speaking:false,browser:"speechSynthesis" in window};
+const player=new Audio(); let speakId=0;
+S.tts=Object.assign({voice:"andrew",rate:1,auto:false},S.tts);
+if(!VOICES.some(v=>v[0]===S.tts.voice)) S.tts.voice="andrew";
+function voiceOpts(){return VOICES.filter(v=>v[0]!=="computer"||tts.browser).map(([k,l])=>`<option value="${k}" ${k===S.tts.voice?"selected":""}>${l}</option>`).join("")}
+function setReadBtn(){const b=$("#read");if(b){b.textContent=tts.speaking?"■ Stop reading":"🔊 Read slide";b.classList.toggle("reading",tts.speaking)}}
+function stopSpeak(){speakId++;tts.speaking=false;player.onended=player.onerror=null;player.pause();if(tts.browser)try{speechSynthesis.cancel()}catch(e){}setReadBtn()}
+function browserSpeak(text,done){
+  if(!tts.browser){done();return}
+  const u=new SpeechSynthesisUtterance(text);
+  const best=speechSynthesis.getVoices().find(v=>/^en/i.test(v.lang)&&/natural|premium|enhanced|google us/i.test(v.name)); if(best)u.voice=best;
+  u.rate=S.tts.rate; u.onend=u.onerror=done;
+  tts.speaking=true; setReadBtn(); speechSynthesis.speak(u);
+}
+function speak(text,file){
+  stopSpeak(); const id=speakId;
+  const done=()=>{if(id!==speakId)return;tts.speaking=false;setReadBtn()};
+  if(S.tts.voice==="computer"||!file){browserSpeak(text,done);return}
+  player.src=`audio/${S.tts.voice}/${file}.mp3`;
+  player.defaultPlaybackRate=player.playbackRate=S.tts.rate;
+  player.onended=done;
+  player.onerror=()=>{if(id===speakId)browserSpeak(text,done)};
+  tts.speaking=true; setReadBtn();
+  player.play().catch(done);
+}
+
+/* ---------- per-topic timer (runs only in Lessons) ---------- */
+const clock={topic:null,start:null,paused:false};
+const fmt=ms=>{const s=Math.floor(ms/1000);return `${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`};
+function clockElapsed(id){return (S.times[id]||0)+(clock.topic===id&&clock.start?Date.now()-clock.start:0)}
+function clockStop(){if(clock.topic&&clock.start){S.times[clock.topic]=(S.times[clock.topic]||0)+Date.now()-clock.start;clock.start=null;save()}}
+function clockSet(id){if(clock.topic!==id){clockStop();clock.topic=id}if(!clock.paused&&!clock.start)clock.start=Date.now();clockDraw()}
+function clockDraw(){
+  const box=$("#clockbox"); box.hidden=room!=="lessons"||!clock.topic;
+  if(box.hidden)return;
+  $("#clabel").textContent=`Topic ${T.findIndex(t=>t.id===clock.topic)+1}`;
+  $("#ctime").textContent=fmt(clockElapsed(clock.topic));
+  $("#cpause").textContent=clock.paused?"Resume":"Pause";
+}
+$("#cpause").onclick=()=>{clock.paused=!clock.paused;if(clock.paused)clockStop();else clock.start=Date.now();clockDraw()};
+$("#creset").onclick=()=>{S.times[clock.topic]=0;if(clock.start)clock.start=Date.now();save();clockDraw()};
+setInterval(clockDraw,1000);
+
+function toggleKnown(id){if(S.known[id])delete S.known[id];else S.known[id]=1;save()}
+
+function go(r,opt){stopSpeak();if(r!=="lessons")clockStop();room=r;try{history.replaceState(null,"","#"+r)}catch(e){}renderTabs();render(opt);clockDraw();window.scrollTo(0,0)}
+
+function chipsFor(t){
+  const c=[];
+  if(S.known[t.id]) c.push(`<span class="chip ok">Got it down</span>`);
+  if(S.times[t.id]>=1000) c.push(`<span class="chip">⏱ ${fmt(S.times[t.id])}</span>`);
+  const q=S.quiz[t.id]; if(q) c.push(`<span class="chip ${q.r/q.n>=.8?"ok":"warn"}">Quiz ${q.r}/${q.n}</span>`);
+  const s=S.test[t.id]; if(s!=null) c.push(`<span class="chip ${s>=80?"ok":"warn"}">Test ${s}%</span>`);
+  if(!c.length) c.push(`<span class="chip">Not started</span>`);
+  return c.join("");
+}
+
+/* ---------- rooms ---------- */
+function render(opt={}){
+  const app=$("#app");
+  if(room==="home"){
+    const ready=T.filter(t=>S.test[t.id]>=80).length;
+    app.innerHTML=`<section class="hero">
+      <h1>Writing retake: 5 of these 10</h1>
+      <p>The teacher picks 5 of the 10 topics below, and you write a few sentences on each: what it was and why it mattered. Go through the Lessons, warm up with Flashcards and the Quiz Show, then take the Practice Test until every topic scores 80% or better.</p>
+      <p class="mono" style="color:var(--yellow);margin:0">Checked off: ${Object.keys(S.known).length} / 10 · Practice test 80%+: ${ready} / 10</p>
+      <p class="muted" style="margin:0;font-size:.9rem">Tap the box on a topic when you've got it down.</p>
+    </section>
+    <div class="grid">${T.map((t,i)=>`<div class="topic ${S.known[t.id]?"known":""}"><button class="open" data-lesson="${t.id}"><span class="num">${String(i+1).padStart(2,"0")} · ${t.when}</span><h3>${t.title}</h3><div class="chips">${chipsFor(t)}</div></button><button class="check" data-check="${t.id}" aria-pressed="${!!S.known[t.id]}" aria-label="I've got ${esc(t.title)} down">${S.known[t.id]?"✓":""}</button></div>`).join("")}</div>
+    <h2 class="section-h">How to write a full-credit answer</h2>
+    <div class="mix">
+      <div><b>1. What it was</b>Name it and say what kind of thing it was: a plan of government, a compromise, a war, an election, a policy.</div>
+      <div><b>2. When</b>Give the year. Dates are an easy point.</div>
+      <div><b>3. Who</b>Name at least one person tied to it, like Madison, Henry Clay, or John Quincy Adams.</div>
+      <div><b>4. Why it mattered</b>End with the result: what changed because of it.</div>
+    </div>
+    <h2 class="section-h">Tonight's plan (about 75 minutes)</h2>
+    <ol class="muted" style="max-width:65ch;display:grid;gap:6px;padding-left:1.2em">
+      <li><b style="color:var(--chalk)">Lessons</b> for all 10 topics (30 min). Read the "Say this on the test" slide out loud.</li>
+      <li><b style="color:var(--chalk)">Flashcards</b>, all topics, until you get them right (10 min).</li>
+      <li><b style="color:var(--chalk)">Quiz Show</b>: two rounds (10 min).</li>
+      <li><b style="color:var(--chalk)">Practice Test</b> with the timer on (20 min). Redo any topic under 80% with "My 5 weakest".</li>
+      <li>Before bed: cover the answers and explain 3 random topics out loud.</li>
+    </ol>`;
+    app.querySelectorAll("[data-lesson]").forEach(b=>b.onclick=()=>go("lessons",{topic:b.dataset.lesson}));
+    app.querySelectorAll("[data-check]").forEach(b=>b.onclick=()=>{toggleKnown(b.dataset.check);render()});
+  }
+  if(room==="lessons") lessonRoom(app,opt.topic||lessonTopic||T[0].id);
+  if(room==="flash") flashRoom(app);
+  if(room==="quiz") quizRoom(app);
+  if(room==="lineup") lineupRoom(app);
+  if(room==="test") testRoom(app);
+}
+
+function pickBar(cur,attr){
+  return `<div class="topic-pick">${T.map((t,i)=>`<button ${attr}="${t.id}" aria-pressed="${t.id===cur}">${i+1}. ${t.title}</button>`).join("")}</div>`;
+}
+
+/* Lessons: each topic's slides end with a "Say this on the test" slide holding the full-credit answer. */
+const allSlides = t => [...t.slides,{h:"Say this on the test",say:t.answer}];
+function slideSpeech(t,s){
+  const end=x=>/[.!?]$/.test(x)?x:x+".";
+  return [t.title,s.h,...(s.p||[]),s.tip||"",s.say||""].filter(Boolean).map(end).join(" ");
+}
+let slideIdx=0, lessonTopic=null, keyHandler=null;
+function lessonRoom(app,topicId){
+  if(lessonTopic!==topicId){slideIdx=0;lessonTopic=topicId}
+  const t=byId(topicId);
+  const slides=allSlides(t);
+  const s=slides[slideIdx], last=slideIdx===slides.length-1;
+  const n=T.indexOf(t);
+  app.innerHTML=`${pickBar(t.id,"data-t")}
+  <section class="stage" aria-live="polite">
+    <div class="eyebrow">Topic ${n+1} of 10 · ${esc(t.title)} · ${t.when}</div>
+    <div style="display:grid;gap:16px;align-content:start">
+      <h2>${esc(s.h)}</h2>
+      ${s.p?`<ul>${s.p.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
+      ${s.tip?`<div class="note">${esc(s.tip)}</div>`:""}
+      ${s.say?`<div class="say">${esc(s.say)}</div><p class="muted" style="margin:0">Read it out loud twice, then try to say it without looking.</p>`:""}
+    </div>
+    <div class="ctrl">
+      <button class="btn ghost" id="prev" ${slideIdx===0&&n===0?"disabled":""}>← Back</button>
+      <button class="btn ${last?"y":""}" id="next">${last?(n<9?"Next topic →":"Go to Quiz Show →"):"Next →"}</button>
+      <button class="btn ghost" id="read">🔊 Read slide</button>
+      <button class="btn ghost knowbtn" id="know" aria-pressed="${!!S.known[t.id]}">${S.known[t.id]?"✓ Got it down":"☐ Got it down"}</button>
+      <div class="dots">${slides.map((_,i)=>`<i class="${i===slideIdx?"on":""}"></i>`).join("")}</div>
+    </div>
+  </section>
+  <div class="tts"><label>Voice <select id="voice">${voiceOpts()}</select></label>
+    <label>Speed <select id="rate">${[0.75,1,1.25,1.5].map(r=>`<option value="${r}" ${r==S.tts.rate?"selected":""}>${r}×</option>`).join("")}</select></label>
+    <label><input type="checkbox" id="auto" ${S.tts.auto?"checked":""}> Read each slide automatically</label>
+    <span>Arrow keys change slides.</span></div>`;
+  stopSpeak(); clockSet(t.id);
+  $("#know").onclick=e=>{toggleKnown(t.id);const k=!!S.known[t.id];e.currentTarget.setAttribute("aria-pressed",k);e.currentTarget.textContent=k?"✓ Got it down":"☐ Got it down"};
+  const text=slideSpeech(t,s), file=`${t.id}-${slideIdx}`;
+  $("#read").onclick=()=>tts.speaking?stopSpeak():speak(text,file);
+  $("#voice").onchange=e=>{S.tts.voice=e.target.value;save();if(tts.speaking)speak(text,file)};
+  $("#rate").onchange=e=>{S.tts.rate=+e.target.value;save();player.defaultPlaybackRate=player.playbackRate=S.tts.rate};
+  $("#auto").onchange=e=>{S.tts.auto=e.target.checked;save();if(S.tts.auto)speak(text,file)};
+  if(S.tts.auto) speak(text,file);
+  app.querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>lessonRoom(app,b.dataset.t));
+  const next=()=>{if(!last){slideIdx++;lessonRoom(app,t.id)}else if(n<9){lessonRoom(app,T[n+1].id)}else go("quiz")};
+  const prev=()=>{if(slideIdx>0){slideIdx--;lessonRoom(app,t.id)}else if(n>0){const p=T[n-1];lessonTopic=p.id;slideIdx=allSlides(p).length-1;lessonRoom(app,p.id)}};
+  $("#next").onclick=next; $("#prev").onclick=prev;
+  if(keyHandler) document.removeEventListener("keydown",keyHandler);
+  keyHandler=e=>{if(room!=="lessons"||e.target.closest("input,select,textarea"))return;if(e.key==="ArrowRight")next();if(e.key==="ArrowLeft")prev()};
+  document.addEventListener("keydown",keyHandler);
+}
+
+/* Flashcards */
+let deck=[], fi=0, flashFilter="all";
+function buildDeck(){
+  deck=shuffle(T.filter(t=>flashFilter==="all"||t.id===flashFilter).flatMap(t=>t.cards.map(c=>({t:t.title,q:c[0],a:c[1]}))));fi=0;
+}
+function flashRoom(app){
+  if(!deck.length) buildDeck();
+  const done=fi>=deck.length, c=deck[fi];
+  app.innerHTML=`<div class="topic-pick"><button data-f="all" aria-pressed="${flashFilter==="all"}">All topics</button>${T.map((t,i)=>`<button data-f="${t.id}" aria-pressed="${flashFilter===t.id}">${i+1}. ${t.title}</button>`).join("")}</div>
+  <div class="card-area">
+    ${done?`<div class="qbox" style="text-align:center;width:min(560px,100%)"><h2>Deck cleared!</h2><p class="muted">Every card answered with "Got it."</p><button class="btn y" id="again">Shuffle again</button></div>`:`
+    <p class="mono muted" style="margin:0">${deck.length} cards left</p>
+    <button class="flash" id="card" aria-label="Flip card"><div class="in">
+      <div class="face front"><small>${esc(c.t)}</small>${esc(c.q)}</div>
+      <div class="face back"><small>${esc(c.t)}</small>${esc(c.a)}</div>
+    </div></button>
+    <div class="ctrl"><button class="btn ghost" id="miss">Again</button><button class="btn" id="flip">Flip</button><button class="btn y" id="got">Got it</button></div>
+    <p class="muted" style="font-size:.88rem;margin:0">Say the answer out loud before you flip. "Again" puts the card back in the deck.</p>`}
+  </div>`;
+  app.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{flashFilter=b.dataset.f;buildDeck();flashRoom(app)});
+  if(done){$("#again").onclick=()=>{buildDeck();flashRoom(app)};return}
+  const card=$("#card"); const flip=()=>card.classList.toggle("flipped");
+  card.onclick=flip; $("#flip").onclick=flip;
+  $("#got").onclick=()=>{deck.splice(fi,1);flashRoom(app)};
+  $("#miss").onclick=()=>{const x=deck.splice(fi,1)[0];deck.push(x);flashRoom(app)};
+}
+
+/* Quiz Show */
+let Q=null;
+function newQuiz(){Q={items:shuffle(T.flatMap(t=>t.quiz.map(q=>mkQ(t,q)))).slice(0,12),i:0,pts:0,streak:0,best:0,right:0,pick:null}}
+function quizRoom(app){
+  if(!Q) newQuiz();
+  if(Q.i>=Q.items.length){
+    app.innerHTML=`<div class="qbox" style="text-align:center"><h2 style="font-family:var(--f-display);font-size:2rem">Final score: ${Q.pts}</h2>
+    <p class="score" style="justify-content:center"><span>Correct <b>${Q.right}/${Q.items.length}</b></span><span>Best streak <b>${Q.best}</b></span></p>
+    <p class="muted">${Q.right>=10?"Excellent. Head to the Practice Test.":"Go back over the topics you missed in Lessons, then play again."}</p>
+    <div class="ctrl" style="justify-content:center"><button class="btn y" id="again">Play again</button><button class="btn ghost" id="totest">Practice Test →</button></div></div>`;
+    $("#again").onclick=()=>{newQuiz();quizRoom(app)}; $("#totest").onclick=()=>go("test"); return;
+  }
+  const it=Q.items[Q.i];
+  app.innerHTML=`<div class="qbox">
+    <div class="score"><span>Question <b>${Q.i+1}</b>/${Q.items.length}</span><span>Points <b>${Q.pts}</b></span><span>Streak <b>${Q.streak}</b>${Q.streak>=3?" 🔥":""}</span></div>
+    <div class="mono muted" style="font-size:.8rem">${esc(it.t)}</div>
+    <h2>${esc(it.q)}</h2>
+    ${mcView(it.opts,Q.pick,it.why,"Next question →",()=>"")}
+  </div><p class="muted" style="font-size:.88rem">100 points per right answer, plus 50 for each answer in your current streak.</p>`;
+  if(Q.pick!=null){$("#nq").onclick=()=>{Q.i++;Q.pick=null;quizRoom(app)};return}
+  app.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+    Q.pick=+b.dataset.i; const o=it.opts[Q.pick];
+    const rec=S.quiz[it.tid]||{r:0,n:0}; rec.n++;
+    if(o.right){Q.streak++;Q.best=Math.max(Q.best,Q.streak);Q.pts+=100+50*(Q.streak-1);Q.right++;rec.r++}
+    else Q.streak=0;
+    S.quiz[it.tid]=rec;save();
+    quizRoom(app); $("#nq").focus();
+  });
+}
+
+/* Renders one multiple-choice question from a stored pick (null = unanswered). Keeping the pick in state means
+   leaving the tab mid-question and coming back redraws the same state instead of leaving dead buttons. */
+function mcView(opts,pick,why,nextLabel,extra){
+  const o=pick!=null?opts[pick]:null;
+  return `<div class="opts">${opts.map((x,j)=>`<button class="opt ${pick!=null&&x.right?"right":""} ${pick===j&&!x.right?"wrong":""}" data-i="${j}" ${pick!=null?"disabled":""}>${String.fromCharCode(65+j)}. ${esc(x.o)}</button>`).join("")}</div>
+    ${o?`<div><p style="margin:0" class="${o.right?"":"why"}"><b style="color:${o.right?"var(--good)":"var(--bad)"}">${o.right?"Correct!":"Not quite."}</b> ${esc(why)}</p>
+    <div class="ctrl" style="margin-top:10px"><button class="btn y" id="nq">${nextLabel}</button>${extra(o)}</div></div>`:""}`;
+}
+
+/* President Lineup */
+const PRES=[["George Washington","1789–1797","Created the cabinet, two terms, Farewell Address"],
+  ["John Adams","1797–1801","XYZ Affair, Alien and Sedition Acts, lost in 1800"],
+  ["Thomas Jefferson","1801–1809","Louisiana Purchase, Embargo Act"],
+  ["James Madison","1809–1817","War of 1812, Father of the Constitution"],
+  ["James Monroe","1817–1825","Monroe Doctrine, Missouri Compromise"]];
+const NP=PRES.length;
+S.lineup=Object.assign({wins:0,best:null,hard:false},S.lineup);
+let L=null, resetTimer=null;
+function newLineup(){let o;do{o=shuffle([...PRES.keys()])}while(o.every((v,i)=>v===i));L={order:o,solved:false,start:Date.now()}}
+function lineupRoom(app){
+  if(!L) newLineup();
+  const ord=L.order, hard=S.lineup.hard;
+  app.innerHTML=`<section class="hero" style="padding-bottom:0">
+    <h1 style="font-size:clamp(1.9rem,5vw,2.8rem)">President Lineup</h1>
+    <p>Put the first five presidents in order, 1st at the top. Drag a card, or use the arrows. Memory trick: <b style="color:var(--chalk)">W</b>ash <b style="color:var(--chalk)">A</b>dds <b style="color:var(--chalk)">J</b>elly, <b style="color:var(--chalk)">M</b>akes <b style="color:var(--chalk)">M</b>oney.</p></section>
+  <ol class="lineup ${L.solved?"solved":""}" id="lineup">${ord.map((p,i)=>`<li class="pcard" data-p="${p}">
+    <span class="slot">${i+1}</span>
+    <span class="who"><b>${PRES[p][0]}</b>${hard&&!L.solved?"":`<small>${PRES[p][2]}</small>`}${L.solved?`<small class="yrs">${PRES[p][1]}</small>`:""}</span>
+    <span class="arrows"><button data-mv="-1" aria-label="Move ${PRES[p][0]} up" ${i===0||L.solved?"disabled":""}>▲</button><button data-mv="1" aria-label="Move ${PRES[p][0]} down" ${i===NP-1||L.solved?"disabled":""}>▼</button></span></li>`).join("")}</ol>
+  ${L.solved?`<p class="win">Correct! New round coming…</p>`:""}
+  <div class="lstat"><span>In the right spot: <b id="lright">0</b>/${NP}</span><span>Rounds won: <b>${S.lineup.wins}</b></span><span>Best time: <b>${S.lineup.best?fmt(S.lineup.best):"–"}</b></span></div>
+  <div class="tts"><label><input type="checkbox" id="hard" ${hard?"checked":""}> Hard mode: hide the clues</label><button class="btn ghost" id="shuf" style="padding:5px 12px">Shuffle</button></div>`;
+  $("#lright").textContent=ord.filter((p,i)=>p===i).length;
+  $("#hard").onchange=e=>{S.lineup.hard=e.target.checked;save();lineupRoom(app)};
+  $("#shuf").onclick=()=>{clearTimeout(resetTimer);newLineup();lineupRoom(app)};
+  if(L.solved) return;
+  const list=$("#lineup");
+  list.querySelectorAll("[data-mv]").forEach(b=>b.onclick=()=>{
+    const i=[...list.children].indexOf(b.closest("li")), j=i+ +b.dataset.mv;
+    [ord[i],ord[j]]=[ord[j],ord[i]]; checkLineup(app,`[data-p="${ord[j]}"] [data-mv="${b.dataset.mv}"]`);
+  });
+  /* Listeners live on document (not pointer capture) because moving the card in the DOM drops capture mid-drag. */
+  let drag=null;
+  const move=e=>{
+    if(!drag)return; e.preventDefault();
+    const li=drag.li, others=[...list.children].filter(x=>x!==li);
+    const before=others.find(x=>{const r=x.getBoundingClientRect();return e.clientY<r.top+r.height/2});
+    if(before!==li.nextElementSibling) list.insertBefore(li,before||null);
+    li.style.transform=`translateY(${e.clientY-drag.y0-(li.offsetTop-drag.top0)}px) scale(1.02)`;
+    [...list.children].forEach((x,i)=>x.querySelector(".slot").textContent=i+1);
+  };
+  const end=()=>{
+    if(!drag)return; const li=drag.li; drag=null;
+    li.classList.remove("drag"); li.style.transform="";
+    document.removeEventListener("pointermove",move); document.removeEventListener("pointerup",end); document.removeEventListener("pointercancel",end);
+    L.order=[...list.children].map(x=>+x.dataset.p); checkLineup(app);
+  };
+  list.querySelectorAll(".pcard").forEach(li=>li.addEventListener("pointerdown",e=>{
+    if(e.target.closest("button")||e.button>0)return; e.preventDefault();
+    drag={li,y0:e.clientY,top0:li.offsetTop}; li.classList.add("drag");
+    document.addEventListener("pointermove",move,{passive:false}); document.addEventListener("pointerup",end); document.addEventListener("pointercancel",end);
+  }));
+}
+function checkLineup(app,refocus){
+  if(L.order.every((p,i)=>p===i)){
+    L.solved=true;const t=Date.now()-L.start;
+    S.lineup.wins++;if(!S.lineup.best||t<S.lineup.best)S.lineup.best=t;save();
+    lineupRoom(app);confetti();
+    clearTimeout(resetTimer);
+    resetTimer=setTimeout(()=>{newLineup();if(room==="lineup")lineupRoom(app)},3200);
+  }else{lineupRoom(app);const f=refocus&&$(refocus);if(f&&!f.disabled)f.focus()}
+}
+function confetti(){
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  const c=document.createElement("canvas");c.id="confetti";document.body.appendChild(c);
+  const x=c.getContext("2d"),W=c.width=innerWidth,H=c.height=innerHeight;
+  const cols=["#f2d675","#9fe0a8","#f2a3a0","#eef0e6","#8ec5ff","#ffb86b"];
+  const P=Array.from({length:180},()=>({x:W/2+(Math.random()-.5)*W*.3,y:H*.35,vx:(Math.random()-.5)*16,vy:-Math.random()*16-4,s:6+Math.random()*6,r:Math.random()*6,vr:(Math.random()-.5)*.3,c:cols[Math.random()*cols.length|0]}));
+  const t0=performance.now();
+  (function f(now){
+    x.clearRect(0,0,W,H);
+    P.forEach(p=>{p.vy+=.45;p.vx*=.99;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;
+      x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle=p.c;x.fillRect(-p.s/2,-p.s/4,p.s,p.s/2);x.restore()});
+    if(now-t0<3000)requestAnimationFrame(f);else c.remove();
+  })(t0);
+}
+
+/* Practice Test: 5 of the 10 topics, written answers checked for key ideas. The test in progress is saved per viewer. */
+let W=(()=>{try{const w=JSON.parse(localStorage.getItem("er-writing-test"));return w&&w.ids?w:null}catch(e){return null}})(), timerId=null;
+const saveW=()=>{try{localStorage.setItem("er-writing-test",JSON.stringify(W))}catch(e){}};
+function newTest(ids){W={ids:ids||shuffle(T.map(t=>t.id)).slice(0,5),graded:false,answers:{},end:null};saveW()}
+function gradeOne(t,txt){
+  txt=(txt||"").toLowerCase();
+  const res=t.keys.map(([idea,words])=>({idea,hit:words.some(w=>txt.includes(w))}));
+  return {res,pct:Math.round(100*res.filter(r=>r.hit).length/res.length)};
+}
+function testRoom(app){
+  if(!W) newTest();
+  clearInterval(timerId);
+  let total="";
+  if(W.graded){
+    const avg=Math.round(W.ids.reduce((s,id)=>s+gradeOne(byId(id),W.answers[id]).pct,0)/W.ids.length);
+    total=`<span class="grade">${avg>=90?"A":avg>=80?"B":avg>=70?"C":avg>=60?"D":"Redo"} · ${avg}%</span>`;
+  }
+  app.innerHTML=`<div class="topic-pick" style="align-items:center">
+    <button id="newset" aria-pressed="false">New random 5</button>
+    <button id="weak" aria-pressed="false">My 5 weakest</button>
+    ${W.graded?"":`<button id="tmr" aria-pressed="${!!W.end}">${W.end?"Timer on":"Start 20-min timer"}</button>`}
+    <span class="timer" id="clock"></span>
+  </div>
+  <form class="paper lined" id="paper">
+    <div><h2 style="font-size:1.9rem">Short Answer Retake</h2>
+    <p style="margin:6px 0 0">Explain each topic in 2–4 sentences. Tell <b>what it was</b> and <b>why it mattered</b>. Use names and dates.</p></div>
+    ${total?`<div>${total}</div>`:""}
+    ${W.ids.map((id,i)=>{const t=byId(id);const g=W.graded?gradeOne(t,W.answers[id]):null;return `<div class="q">
+      <label for="a-${id}">${i+1}. ${esc(t.title)}</label>
+      <textarea id="a-${id}" data-id="${id}" ${W.graded?"readonly":""} placeholder="Write your answer here…">${esc(W.answers[id]||"")}</textarea>
+      ${g?`<div class="res"><b>${g.pct}% of key ideas</b>
+        <ul>${g.res.map(r=>`<li class="${r.hit?"hit":"miss"}">${r.hit?"✓":"✗"} ${esc(r.idea)}</li>`).join("")}</ul>
+        <div class="model"><b>Full-credit example:</b> ${esc(t.answer)}</div></div>`:""}</div>`}).join("")}
+    <div class="ctrl"><button class="btn" type="submit" style="background:#23312b;color:#f6f1df">${W.graded?"Try this set again":"Turn it in"}</button></div>
+  </form>
+  <p class="muted" style="font-size:.88rem">The checker looks for key words, so it can be fooled. Compare your answer to the full-credit example too.</p>`;
+  app.querySelectorAll("textarea").forEach(ta=>ta.oninput=()=>{W.answers[ta.dataset.id]=ta.value;saveW()});
+  $("#newset").onclick=()=>{newTest();testRoom(app)};
+  $("#weak").onclick=()=>{newTest([...T].sort((a,b)=>(S.test[a.id]??-1)-(S.test[b.id]??-1)).slice(0,5).map(t=>t.id));testRoom(app)};
+  if(!W.graded){
+    $("#tmr").onclick=()=>{W.end=W.end?null:Date.now()+20*60*1000;saveW();testRoom(app)};
+    const tick=()=>{const c=$("#clock");if(!c||!W.end){if(c)c.textContent="";return}
+      const ms=Math.max(0,W.end-Date.now());c.textContent=ms?`${fmt(ms)} left`:"Time's up! Turn it in.";};
+    tick(); timerId=setInterval(tick,1000);
+  }
+  $("#paper").onsubmit=e=>{e.preventDefault();
+    if(W.graded){W.graded=false;W.answers={};saveW();testRoom(app);return}
+    W.graded=true;W.end=null;
+    W.ids.forEach(id=>{S.test[id]=Math.max(S.test[id]??0,gradeOne(byId(id),W.answers[id]).pct)});
+    save();saveW();testRoom(app);scrollTo(0,0);
+  };
+}
+
+renderTabs(); render();
+</script>
+
+</body>
+</html>
